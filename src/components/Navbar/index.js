@@ -1,4 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
+import InputSearch from './InputSearch';
+import { Input } from 'postcss';
 
 const Navbar = () => {
   return (
@@ -7,7 +9,7 @@ const Navbar = () => {
         <Link href="/" className="text-2xl text-white font-bold">
           ENVOYANIMELIST
         </Link>
-        <input placeholder="Search Anime...." className=""></input>
+        <InputSearch></InputSearch>
       </div>
     </header>
   );
