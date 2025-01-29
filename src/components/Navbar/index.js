@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import InputSearch from './InputSearch';
-import { Input } from 'postcss';
 
 const Navbar = () => {
   return (
