@@ -1,12 +1,13 @@
 import AnimeList from '@/components/AnimeList';
 import Header from '@/components/AnimeList/header';
+import { getAnimeResponse, getMangaResponse } from './libs/api-libs';
+import { Log } from '@phosphor-icons/react';
 
 const Page = async () => {
   // Fetch top anime
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=10`
-  );
-  const topAnime = await response.json();
+  const topAnime = await getAnimeResponse('top/anime', 'limit=10');
+  const topManga = await getMangaResponse('top/manga', 'limit=10');
+  console.log(topAnime);
 
   return (
     <>
@@ -14,19 +15,19 @@ const Page = async () => {
       <section>
         <Header
           title={`Popular Animes`}
-          linkHref={`/popular`}
+          linkHref={`/popular_anime`}
           linkTitle={`View More`}
         ></Header>
         <AnimeList api={topAnime}></AnimeList>
       </section>
-      {/* Recent Animes */}
+      {/* Popular Manga */}
       <section>
         <Header
-          title={`Recent Animes`}
-          linkHref={`/new`}
+          title={`Popular Manga`}
+          linkHref={`/popular_manga`}
           linkTitle={`See More`}
         ></Header>
-        <AnimeList api={topAnime}></AnimeList>
+        <AnimeList api={topManga}></AnimeList>
       </section>
     </>
   );
