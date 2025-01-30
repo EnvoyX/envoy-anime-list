@@ -1,12 +1,21 @@
-import AnimeList from '@/components/AnimeList';
-import Header from '@/components/AnimeList/Header';
-import { getAnimeResponse, getMangaResponse } from './libs/api-libs';
+import AnimeList from "@/components/AnimeList";
+import Header from "@/components/AnimeList/Header";
+import {
+  getAnimeResponse,
+  getGeneratedRecommendationAnime,
+  getMangaResponse,
+  getNestedAnimeResponse,
+} from "@/libs/api-libs";
 
 const Page = async () => {
   // Fetch top anime
-  const topAnime = await getAnimeResponse('top/anime', 'limit=10');
-  const topManga = await getMangaResponse('top/manga', 'limit=10');
-  console.log(topAnime);
+  const topAnime = await getAnimeResponse("top/anime", "limit=12");
+  let recommendedAnimes = await getNestedAnimeResponse(
+    "recommendations/anime",
+    "entry"
+  );
+  recommendedAnimes = getGeneratedRecommendationAnime(recommendedAnimes, 12);
+  const topManga = await getMangaResponse("top/manga", "limit=12");
 
   return (
     <>
@@ -17,7 +26,12 @@ const Page = async () => {
           linkHref={`/popular_anime`}
           linkTitle={`View More`}
         ></Header>
-        <AnimeList api={topAnime} isAnime={'anime'}></AnimeList>
+        <AnimeList api={topAnime} isAnime={"anime"}></AnimeList>
+      </section>
+      {/* Recommended Anime */}
+      <section className="mt-16">
+        <Header title={`Recommended Anime`}></Header>
+        <AnimeList api={recommendedAnimes} isAnime={"anime"}></AnimeList>
       </section>
       {/* Popular Manga */}
       <section className="mt-16">

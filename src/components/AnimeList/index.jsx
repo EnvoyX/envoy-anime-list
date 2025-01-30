@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 const AnimeList = ({ api, isAnime }) => {
   return (
-    <div className="grid lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
+    <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-4 px-4">
       {/* api.data? => if there's a data, render it. if there isn't wait until data available */}
       {api.data?.map((data, i) => {
         return (
@@ -12,15 +12,16 @@ const AnimeList = ({ api, isAnime }) => {
             key={data.mal_id + isAnime ? i : i + 1}
           >
             <Link
-              href={`/${isAnime ? 'anime' : 'manga'}/${data.mal_id}`}
+              href={`/${isAnime ? "anime" : "manga"}/${data.mal_id}`}
               className=" text-color-primary hover:text-color-accent transition-all"
             >
               <Image
                 src={data.images.webp.image_url}
                 width={350}
                 height={350}
+                priority={true}
                 className="w-full md:max-h-[500px] max-h-60 object-cover rounded-t-lg"
-                alt={`${isAnime ? 'Anime image' : 'Manga image'}`}
+                alt={`${isAnime ? "Anime image" : "Manga image"}`}
               ></Image>
               <h3 className="font-bold md:text-xl text-md p-4">{data.title}</h3>
             </Link>

@@ -1,17 +1,12 @@
-import {
-  getAnimeResponse,
-  getPhotoAnime,
-  getVideoAnime,
-} from '@/app/libs/api-libs';
-import VideoPlayer from '@/components/Utilities/VideoPlayer';
-import { log } from 'console';
-import Image from 'next/image';
-import Link from 'next/link';
+import { getAnimeResponse } from "@/libs/api-libs";
+import VideoPlayer from "@/components/Utilities/VideoPlayer";
+import Image from "next/image";
+import Link from "next/link";
 
 const Page = async ({ params: { id } }) => {
-  const anime = await getAnimeResponse(`anime/${id}`, '');
-  const photos = await getPhotoAnime(`anime/${id}/pictures`, '');
-  const videos = await getVideoAnime(`anime/${id}/videos`, '');
+  const anime = await getAnimeResponse(`anime/${id}`, "");
+  const photos = await getAnimeResponse(`anime/${id}/pictures`, "");
+  const videos = await getAnimeResponse(`anime/${id}/videos`, "");
   return (
     <>
       <div className="pt-4 px-4">
@@ -94,13 +89,13 @@ const Page = async ({ params: { id } }) => {
         <div className="p-4 bg-color-secondary rounded-lg">
           <h3 className="p-2 mb-2">Trailers</h3>
           <div className="p-0 md:p-4 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 ">
-            {videos.data.promo?.map((video, i) => {
+            {videos.data?.promo.map((video, i) => {
               return (
                 <div key={i}>
                   <VideoPlayer
                     youtubeId={video.trailer.youtube_id}
-                    height={360}
-                    width={202.5}
+                    height={320}
+                    width={180}
                   ></VideoPlayer>
                   <h1>{video.title}</h1>
                 </div>

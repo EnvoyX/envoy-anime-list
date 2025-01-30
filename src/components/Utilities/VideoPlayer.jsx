@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import YouTube from 'react-youtube';
+import YouTube from "react-youtube";
 
 const VideoPlayer = ({ youtubeId, height, width }) => {
   const option = {
@@ -9,14 +9,12 @@ const VideoPlayer = ({ youtubeId, height, width }) => {
   };
 
   return (
-    <div className="">
-      <YouTube
-        videoId={youtubeId}
-        onReady={(event) => event.target.pauseVideo()}
-        opts={option}
-        onError={() => alert(`Video is broken, please try another,=.`)}
-      ></YouTube>
-    </div>
+    <YouTube
+      videoId={youtubeId}
+      onReady={(event) => event.target.pauseVideo()}
+      opts={option}
+      onError={() => alert(`Video is broken, please try another,=.`)}
+    ></YouTube>
   );
 };
 
