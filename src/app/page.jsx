@@ -1,5 +1,5 @@
 import AnimeList from '@/components/AnimeList';
-import Header from '@/components/AnimeList/header';
+import Header from '@/components/AnimeList/Header';
 import { getAnimeResponse, getMangaResponse } from './libs/api-libs';
 
 const Page = async () => {

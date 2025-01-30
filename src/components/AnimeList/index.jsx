@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const AnimeList = ({ api, isAnime }) => {
   return (
-    <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
+    <div className="grid lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
       {/* api.data? => if there's a data, render it. if there isn't wait until data available */}
       {api.data?.map((data, i) => {
         return (

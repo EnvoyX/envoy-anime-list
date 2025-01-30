@@ -1,7 +1,7 @@
 // Page ini disimpan dalam folder seperti src/app/search/[keyword]/page.js
 // Supaya keyword ini didapat berdasarkan dynamic data yang ada di url (kosep folder routing)
 import AnimeList from '@/components/AnimeList';
-import Header from '@/components/AnimeList/header';
+import Header from '@/components/AnimeList/Header';
 import { getAnimeResponse, getMangaResponse } from '@/app/libs/api-libs';
 
 const Page = async ({ params }) => {
