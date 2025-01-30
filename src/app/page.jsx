@@ -1,7 +1,6 @@
 import AnimeList from '@/components/AnimeList';
 import Header from '@/components/AnimeList/header';
 import { getAnimeResponse, getMangaResponse } from './libs/api-libs';
-import { Log } from '@phosphor-icons/react';
 
 const Page = async () => {
   // Fetch top anime
@@ -18,10 +17,10 @@ const Page = async () => {
           linkHref={`/popular_anime`}
           linkTitle={`View More`}
         ></Header>
-        <AnimeList api={topAnime}></AnimeList>
+        <AnimeList api={topAnime} isAnime={'anime'}></AnimeList>
       </section>
       {/* Popular Manga */}
-      <section>
+      <section className="mt-16">
         <Header
           title={`Popular Manga`}
           linkHref={`/popular_manga`}

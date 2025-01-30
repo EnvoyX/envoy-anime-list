@@ -19,7 +19,7 @@ const InputSearch = () => {
   return (
     <div className="relative">
       <input
-        placeholder="Search Anime...."
+        placeholder="Search..."
         className="w-full p-2 rounded"
         ref={searchRef}
         onKeyDown={handleSearch} // onKeyDown untuk mendeteksi input keyboard dari user
