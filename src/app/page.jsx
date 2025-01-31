@@ -5,17 +5,27 @@ import {
   getGeneratedRecommendationAnime,
   getMangaResponse,
   getNestedAnimeResponse,
+  getGeneratedRecommendationManga,
+  getNestedMangaResponse,
 } from "@/libs/api-libs";
 
 const Page = async () => {
-  // Fetch top anime
+  // Fetch top anime & manga
   const topAnime = await getAnimeResponse("top/anime", "limit=12");
+  const topManga = await getMangaResponse("top/manga", "limit=12");
+
+  // Fetch recent recommended anime & manga
   let recommendedAnimes = await getNestedAnimeResponse(
     "recommendations/anime",
     "entry"
   );
   recommendedAnimes = getGeneratedRecommendationAnime(recommendedAnimes, 12);
-  const topManga = await getMangaResponse("top/manga", "limit=12");
+
+  let recommendedManga = await getNestedMangaResponse(
+    "recommendations/manga",
+    "entry"
+  );
+  recommendedManga = getGeneratedRecommendationManga(recommendedManga, 12);
 
   return (
     <>
@@ -41,6 +51,11 @@ const Page = async () => {
           linkTitle={`See More`}
         ></Header>
         <AnimeList api={topManga}></AnimeList>
+      </section>
+      {/* Recommended Manga */}
+      <section className="mt-16">
+        <Header title={`Recommended Manga`}></Header>
+        <AnimeList api={recommendedManga}></AnimeList>
       </section>
     </>
   );

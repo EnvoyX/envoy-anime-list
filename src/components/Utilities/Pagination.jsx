@@ -1,7 +1,7 @@
 const Pagination = ({ page, lastPage, setPage }) => {
   const scrollToTop = () => {
     scrollTo({
-      behavior: 'smooth',
+      behavior: "smooth",
       top: 0,
     });
   };
@@ -26,10 +26,10 @@ const Pagination = ({ page, lastPage, setPage }) => {
   };
 
   return (
-    <div className="flex justify-center text-color-primary py-6 px-2 gap-4 text-xl ">
+    <div className="flex justify-center items-center text-color-primary py-6 px-2 gap-4 text-xl ">
       {page <= 1 ? null : (
         <button
-          className="transition-all hover:text-color-accent"
+          className="px-6 py-2 rounded-lg text-color-dark bg-color-accent hover:text-color-accent hover:bg-color-secondary transition-all"
           onClick={handlePrevPage}
         >
           PREV
@@ -38,7 +38,7 @@ const Pagination = ({ page, lastPage, setPage }) => {
       <p>{`${page} of ${lastPage}`}</p>
       {page >= lastPage ? null : (
         <button
-          className="transition-all hover:text-color-accent"
+          className="px-6 py-2 rounded-lg text-color-dark bg-color-accent hover:text-color-accent hover:bg-color-secondary transition-all"
           onClick={handleNextPage}
         >
           NEXT

@@ -21,7 +21,7 @@
 }
 .loading:before,
 .loading:after {
-  content: '';
+  content: "";
   position: absolute;
   inset: -16px;
   border-radius: 50%;

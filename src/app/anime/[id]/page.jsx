@@ -38,6 +38,7 @@ const Page = async ({ params: { id } }) => {
         </div>
       </div>
       <div className="p-4 m-4 bg-color-secondary rounded-lg flex sm:flex-nowrap flex-wrap gap-2 text-color-primary ">
+        {/* Image */}
         <Image
           src={anime.data.images.webp.image_url}
           alt={anime.data.images.jpg.image_url}
@@ -45,8 +46,17 @@ const Page = async ({ params: { id } }) => {
           height={250}
           className="w-full rounded-lg object-cover"
         ></Image>
-        <div className="p-2">
+        {/* Synposis & Genre */}
+        <div className="flex flex-col md:justify-between gap-6 p-2">
           <p className="text-justify text-md">{anime.data.synopsis}</p>
+          <div className="bg-color-dark p-2 flex flex-col justify-center items-center rounded border border-color-accent">
+            <h3 className="font-bold">Genre</h3>
+            <div className="flex gap-4">
+              {anime.data.genres.map((genre) => {
+                return <p key={genre.name}>{genre.name}</p>;
+              })}
+            </div>
+          </div>
         </div>
       </div>
       <div className="p-4 justify-center items-center mx-auto">
