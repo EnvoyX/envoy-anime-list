@@ -1,8 +1,12 @@
-import { authUserSession } from "@/libs/auth-libs";
-import Image from "next/image";
+import { authUserSession } from '@/libs/auth-libs';
+import { redirect } from 'next/dist/server/api-utils';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Page = async () => {
   const user = await authUserSession();
+  if (!user) redirect('/');
+
   return (
     <>
       <div className="flex justify-center">
@@ -20,8 +24,24 @@ const Page = async () => {
             height={250}
             className="rounded-full"
           ></Image>
-          <div className="bg-color-dark rounded-lg py-5 px-2 text-color-primary">
+          <div className="bg-color-dark rounded-lg py-5 px-2 text-color-primary flex flex-col items-center">
             <h3>Email: {user.email}</h3>
+            <div className="py-8">
+              <Link
+                href={`/users/dashboard/collection`}
+                className="bg-color-accent text-color-dark text-2xl py-3 px-3 rounded-lg font-bold "
+              >
+                Collection
+              </Link>
+            </div>
+            <div className="py-8">
+              <Link
+                href={`/users/dashboard/comment`}
+                className="bg-color-accent text-color-dark text-2xl py-3 px-3 rounded-lg font-bold "
+              >
+                Comments
+              </Link>
+            </div>
           </div>
         </div>
       </div>
