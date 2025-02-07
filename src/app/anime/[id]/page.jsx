@@ -4,20 +4,35 @@ import Image from "next/image";
 import Link from "next/link";
 import CollectionButton from "@/components/AnimeList/CollectionButton";
 import { authUserSession } from "@/libs/auth-libs";
+import prisma from "@/libs/prisma";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`, "");
   const user = await authUserSession();
   const photos = await getAnimeResponse(`anime/${id}/pictures`, "");
   const videos = await getAnimeResponse(`anime/${id}/videos`, "");
-
+  const collection = await prisma.collection.findFirst({
+    where: { user_email: user?.email, mal_id: id },
+  });
   return (
     <>
       <div className="pt-4 px-4">
         <h3 className="text-2xl text-color-primary font-bold">
           {anime.data.title} / {anime.data.title_english} - {anime.data.year}
         </h3>
-        <CollectionButton />
+        {!collection && user && (
+          <CollectionButton
+            mal_id={id}
+            user_email={user?.email}
+            item_image={anime.data.images.webp.image_url}
+            item_title={anime.data.title}
+          />
+        )}
+        {collection && user && (
+          <p className="text-lg text-color-dark rounded-lg px-2 py-1 bg-color-primary max-w-52 text-center">
+            Saved in collection
+          </p>
+        )}
       </div>
       <div className="p-4 flex gap-2 text-neutral-100 overflow-x-auto">
         <div className="bg-color-secondary w-36 p-2 flex flex-col justify-center items-center rounded border border-color-accent text-center">
