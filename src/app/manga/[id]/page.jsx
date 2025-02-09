@@ -37,7 +37,11 @@ const Page = async ({ params: { id } }) => {
       <div className="p-4 m-4 bg-color-secondary rounded-lg flex sm:flex-nowrap flex-wrap gap-2 text-color-primary ">
         {/* Image */}
         <Image
-          src={manga.data.images.webp.image_url}
+          src={
+            manga.data.images.webp.large_image_url
+              ? manga.data.images.webp.large_image_url
+              : manga.data.images.webp.image_url
+          }
           alt={manga.data.images.jpg.image_url}
           width={250}
           height={250}

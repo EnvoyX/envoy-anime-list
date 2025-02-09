@@ -1,8 +1,8 @@
-'use client';
-import { ArrowSquareLeft } from '@phosphor-icons/react';
-import { useRouter } from 'next/navigation';
+"use client";
+import { ArrowSquareLeft } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
 
-export default function HeaderCollection() {
+export default function HeaderCollection({ title }) {
   const route = useRouter();
 
   const handleBack = (e) => {
@@ -16,7 +16,7 @@ export default function HeaderCollection() {
         <ArrowSquareLeft size={32} />
       </button>
       <h1 className="text-2xl text-color-primary font-bold text-center">
-        My Collection
+        {title}
       </h1>
     </div>
   );

@@ -15,7 +15,7 @@ export default async function Collection() {
 
   return (
     <section className="mt-2 p-6 w-full">
-      <HeaderCollection></HeaderCollection>
+      <HeaderCollection title={"My Collections"}></HeaderCollection>
       <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mt-4">
         {collections.map((collection, index) => {
           return (

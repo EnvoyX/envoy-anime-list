@@ -1,11 +1,11 @@
-import { authUserSession } from '@/libs/auth-libs';
-import { redirect } from 'next/dist/server/api-utils';
-import Image from 'next/image';
-import Link from 'next/link';
+import { authUserSession } from "@/libs/auth-libs";
+import { redirect } from "next/dist/server/api-utils";
+import Image from "next/image";
+import Link from "next/link";
 
 const Page = async () => {
   const user = await authUserSession();
-  if (!user) redirect('/');
+  if (!user) redirect("/");
 
   return (
     <>
@@ -29,7 +29,7 @@ const Page = async () => {
             <div className="py-8">
               <Link
                 href={`/users/dashboard/collection`}
-                className="bg-color-accent text-color-dark text-2xl py-3 px-3 rounded-lg font-bold "
+                className="text-2xl py-3 px-3 rounded-lg font-bold text-color-dark bg-color-accent hover:border hover:text-color-accent hover:bg-color-secondary transition-all "
               >
                 Collection
               </Link>
@@ -37,7 +37,7 @@ const Page = async () => {
             <div className="py-8">
               <Link
                 href={`/users/dashboard/comment`}
-                className="bg-color-accent text-color-dark text-2xl py-3 px-3 rounded-lg font-bold "
+                className="text-2xl py-3 px-3 rounded-lg font-bold text-color-dark bg-color-accent hover:border hover:text-color-accent hover:bg-color-secondary transition-all "
               >
                 Comments
               </Link>

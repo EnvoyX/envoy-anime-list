@@ -16,7 +16,11 @@ const AnimeList = ({ api, isAnime }) => {
               className=" text-color-primary hover:text-color-accent transition-all"
             >
               <Image
-                src={data.images.webp.image_url}
+                src={
+                  data.images.webp.large_image_url
+                    ? data.images.webp.large_image_url
+                    : data.images.webp.image_url
+                }
                 width={350}
                 height={350}
                 priority={true}
