@@ -19,6 +19,7 @@ model Collection{
   user_email     String
   item_image     String?
   item_title     String?
+  isAnime        Boolean
 
   @@unique([user_email, mal_id])
 }

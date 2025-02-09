@@ -27,8 +27,13 @@ const Page = async ({ params: { id } }) => {
           <CollectionButton
             mal_id={id}
             user_email={user?.email}
-            item_image={anime.data.images.webp.image_url}
+            item_image={
+              anime.data.images.webp.large_image_url
+                ? anime.data.images.webp.large_image_url
+                : anime.data.images.webp.image_url
+            }
             item_title={anime.data.title}
+            isAnime={true}
           />
         )}
         {collection && user && (

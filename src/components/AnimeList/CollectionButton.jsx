@@ -7,11 +7,12 @@ export default function CollectionButton({
   user_email,
   item_image,
   item_title,
+  isAnime,
 }) {
   const [isCreated, setIsCreated] = useState(false);
   const handleCollection = async (e) => {
     e.preventDefault();
-    const data = { mal_id, user_email, item_image, item_title };
+    const data = { mal_id, user_email, item_image, item_title, isAnime };
     const response = await fetch("/api/v1/collection", {
       method: "POST",
       body: JSON.stringify(data),
