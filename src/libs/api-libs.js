@@ -7,7 +7,7 @@ export const getAnimeResponse = async (resource, query) => {
   return animes;
 };
 export const getNestedAnimeResponse = async (resource, objectProperty) => {
-  const response = await getAnimeResponse(resource);
+  const response = await getAnimeResponse(resource, "");
   return response.data?.flatMap((item) => item[objectProperty]);
 };
 
@@ -33,7 +33,7 @@ export const getMangaResponse = async (resource, query) => {
 };
 
 export const getNestedMangaResponse = async (resource, objectProperty) => {
-  const response = await getMangaResponse(resource);
+  const response = await getMangaResponse(resource, "");
   return response.data?.flatMap((item) => item[objectProperty]);
 };
 

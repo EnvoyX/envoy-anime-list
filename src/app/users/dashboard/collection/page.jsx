@@ -14,8 +14,6 @@ export default async function Collection() {
   const collectionsManga = await prisma.collection.findMany({
     where: { user_email: user?.email, isAnime: false },
   });
-  console.log(collectionsAnime);
-  console.log(collectionsManga);
 
   return (
     <section className="mt-2 p-6 w-full">
